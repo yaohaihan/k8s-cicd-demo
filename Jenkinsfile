@@ -14,14 +14,14 @@ pipeline {
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
         GIT_REPO_URL = '192.168.113.121:28080'
-        GIT_CREDENTIAL_ID = 'gitlab-user-pass'
+        GIT_CREDENTIAL_ID = 'git-user-pass'
         GIT_ACCOUNT = 'root' // change me
-        KUBECONFIG_CREDENTIAL_ID = '4203b0a5-7351-4fa0-ad31-c54f1f34ef99'
+        KUBECONFIG_CREDENTIAL_ID = '546163de-4d55-40b9-9035-83b51d91260b'
         REGISTRY = '192.168.113.122:8858'
         DOCKERHUB_NAMESPACE = 'wolfcode' // change me
         APP_NAME = 'k8s-cicd-demo'
         SONAR_SERVER_URL = 'http://192.168.113.120:31377'
-        SONAR_CREDENTIAL_ID = 'sonar-token'
+        SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
     stages {
