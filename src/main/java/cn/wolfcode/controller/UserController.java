@@ -13,6 +13,6 @@ public class UserController {
     @GetMapping
     public String users(Integer age) {
         log.info("test: {}", age);
-        return "<h1>all users: v1.0.4</h1>";
+        return "<h1>all users: v1.1.0</h1>";
     }
 }
