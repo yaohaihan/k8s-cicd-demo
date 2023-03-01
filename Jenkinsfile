@@ -15,7 +15,7 @@ pipeline {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
         GIT_REPO_URL = '192.168.113.121:28080'
         GIT_CREDENTIAL_ID = 'git-user-pass'
-        GIT_ACCOUNT = 'root' // change me
+        GIT_ACCOUNT = 'gitlab-instance-1a76a240' // change me
         KUBECONFIG_CREDENTIAL_ID = '546163de-4d55-40b9-9035-83b51d91260b'
         REGISTRY = '192.168.113.122:8858'
         DOCKERHUB_NAMESPACE = 'wolfcode' // change me
@@ -25,6 +25,12 @@ pipeline {
     }
 
     stages {
+
+        stage('checkout scm') {
+            steps {
+                checkout scmGit(branches: [[name: '$BRANCH_NAME']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-user-pass', url: 'http://$GIT_REPO_URL/$GIT_ACCOUNT/$APP_NAME.git']])
+            }
+        }
 
         stage('unit test') {
             steps {
