@@ -28,7 +28,7 @@ pipeline {
 
         stage('checkout scm') {
             steps {
-                checkout scmGit(branches: [[name: "$BRANCH_NAME"]], extensions: [], userRemoteConfigs: [[credentialsId: 'git-user-pass', url: "http://$GIT_REPO_URL/$GIT_ACCOUNT/$APP_NAME\.git"]])
+                checkout scmGit(branches: [[name: "$BRANCH_NAME"]], extensions: [], userRemoteConfigs: [[credentialsId: 'git-user-pass', url: "http://192.168.113.121:28080/gitlab-instance-1a76a240/k8s-cicd-demo.git"]])
             }
         }
 
