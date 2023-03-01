@@ -28,7 +28,7 @@ pipeline {
 
         stage('checkout scm') {
             steps {
-                checkout scmGit(branches: [[name: "$BRANCH_NAME"]], extensions: [], userRemoteConfigs: [[credentialsId: 'git-user-pass', url: "http://$GIT_REPO_URL/$GIT_ACCOUNT/$APP_NAME.git"]])
+                checkout scmGit(branches: [[name: "$BRANCH_NAME"]], extensions: [], userRemoteConfigs: [[credentialsId: 'git-user-pass', url: "http://$GIT_REPO_URL/$GIT_ACCOUNT/$APP_NAME\.git"]])
             }
         }
 
