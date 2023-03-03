@@ -17,9 +17,8 @@ pipeline {
         GIT_ACCOUNT = 'gitlab-instance-1a76a240' // change me
         KUBECONFIG_CREDENTIAL_ID = '546163de-4d55-40b9-9035-83b51d91260b'
         REGISTRY = '192.168.113.122:8858'
-        DOCKERHUB_NAMESPACE = 'wolfcode' // change me
+        DOCKERHUB_NAMESPACE = 'snapshots' // change me
         APP_NAME = 'k8s-cicd-demo'
-        SONAR_SERVER_URL = 'http://192.168.113.120:31377'
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
