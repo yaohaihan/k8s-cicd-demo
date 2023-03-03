@@ -6,8 +6,7 @@ pipeline {
     }
 
     parameters {
-        gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
-        choice(name: 'NAMESPACE', choices: ['devops-dev', 'devops-test', 'devops-prod'], description: '命名空间')
+        gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'origin/master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
         string(name: 'TAG_NAME', defaultValue: 'snapshot', description: '标签名称，必须以 v 开头，例如：v1、v1.0.0')
     }
 
@@ -18,9 +17,8 @@ pipeline {
         GIT_ACCOUNT = 'gitlab-instance-1a76a240' // change me
         KUBECONFIG_CREDENTIAL_ID = '546163de-4d55-40b9-9035-83b51d91260b'
         REGISTRY = '192.168.113.122:8858'
-        DOCKERHUB_NAMESPACE = 'wolfcode' // change me
+        DOCKERHUB_NAMESPACE = 'snapshots' // change me
         APP_NAME = 'k8s-cicd-demo'
-        SONAR_SERVER_URL = 'http://192.168.113.120:31377'
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
