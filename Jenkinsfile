@@ -9,7 +9,7 @@ pipeline {
     stage('clone code') {
       steps {
         container('maven') {
-          git(url: 'http://192.168.113.121:28080/gitlab-instance-1a76a240/k8s-cicd-demo.git', credentialsId: 'gitlab-user-pass', branch: '$BRANCH_NAME', changelog: true, poll: false)
+          git(url: 'http://192.168.110.121:28080/root/demo1.git', credentialsId: 'gitlab-user-pass', branch: '$BRANCH_NAME', changelog: true, poll: false)
         }
 
       }
@@ -141,14 +141,16 @@ kubectl apply -f deploy/cicd-demo.yaml'''
 
   }
   environment {
-    REGISTRY = '192.168.113.122:8858'
+
     DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
-    GIT_REPO_URL = '192.168.113.121:28080'
+    GIT_REPO_URL = '192.168.110.121:28080'
     GIT_CREDENTIAL_ID = 'gitlab-user-pass'
-    KUBECONFIG_CREDENTIAL_ID = 'kubeconfig-id'
+    KUBECONFIG_CREDENTIAL_ID = '3123e385-8143-430f-b38b-674d0c913638'
+    REGISTRY = '192.168.110.122:8858'
     DOCKERHUB_NAMESPACE = 'docker_username'
     GITHUB_ACCOUNT = 'root'
-    APP_NAME = 'k8s-cicd-demo'
+    APP_NAME = 'demo1'
+
   }
   parameters {
     string(name: 'BRANCH_NAME', defaultValue: 'master', description: '请选择要发布的分支')
