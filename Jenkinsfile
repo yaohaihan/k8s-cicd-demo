@@ -100,6 +100,7 @@ pipeline {
                 sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME'
             }
         }
+
         stage('deploy to production') {
             when {
                 expression {
