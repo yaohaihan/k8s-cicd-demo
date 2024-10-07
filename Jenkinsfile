@@ -6,7 +6,6 @@ pipeline {
     }
 
     parameters {
-
         gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
         choice(name: 'NAMESPACE', choices: ['devops-dev', 'devops-test', 'devops-prod'], description: '命名空间')
         string(name: 'TAG_NAME', defaultValue: 'snapshot', description: '标签名称，必须以 v 开头，例如：v1、v1.0.0')
@@ -14,14 +13,14 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
-        GIT_REPO_URL = '192.168.113.121:28080'
-        GIT_CREDENTIAL_ID = 'git-user-pass'
+        GIT_REPO_URL = 'https://github.com/yaohaihan/k8s-cicd-demo.git'
+        GIT_CREDENTIAL_ID = 'github-user-pass'
         GIT_ACCOUNT = 'root' // change me
-        KUBECONFIG_CREDENTIAL_ID = '546163de-4d55-40b9-9035-83b51d91260b'
-        REGISTRY = '192.168.113.122:8858'
+        KUBECONFIG_CREDENTIAL_ID = 'ec9a10b4-fa75-44bd-8832-0a5f1596479f'   //在master服务器里面输入cat ~/.kube/config，复制打印出来的内容，然后在Jenkins里面去创建managed files里面创建一个custom file
+        REGISTRY = '192.168.110.122:8858'
         DOCKERHUB_NAMESPACE = 'wolfcode' // change me
         APP_NAME = 'k8s-cicd-demo'
-        SONAR_SERVER_URL = 'http://192.168.113.120:31377'
+        SONAR_SERVER_URL = 'http://192.168.113.120:32276'
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
