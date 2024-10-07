@@ -3,7 +3,7 @@
 FROM eclipse-temurin:8-jre
 
 ## 作者
-MAINTAINER xiaoliu <liugang@wolfcode.cn>
+LABEL org.opencontainers.image.authors="liugang@wolfcode.cn"
 
 ## 定义参数
 
