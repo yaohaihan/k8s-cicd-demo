@@ -7,7 +7,7 @@ pipeline {
                     spec:
                       containers:
                       - name: my-agent
-                        image: 192.168.110.122:8858/wolfcode/maven-jdk21:lastest
+                        image: 192.168.110.122:8858/wolfcode/maven-jdk21:latest
                         command:
                         - cat
                         tty: true
