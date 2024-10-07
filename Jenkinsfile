@@ -24,6 +24,7 @@ pipeline {
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
+
     stages {
 
         stage('unit test') {
