@@ -109,6 +109,7 @@ pipeline {
                     return params.TAG_NAME =~ /v.*/
                 }
             }
+
             steps {
                 input(id: 'deploy-to-production', message: 'deploy to production?')
                 sh '''
