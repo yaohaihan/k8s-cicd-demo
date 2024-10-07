@@ -1,8 +1,18 @@
 pipeline {
     agent {
         kubernetes {
-            label 'maven'
-        }
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                      containers:
+                      - name: my-agent
+                        image: 192.168.110.122:8858/wolfcode/maven-jdk21:lastest
+                        command:
+                        - cat
+                        tty: true
+                    """
+                }
     }
 
     parameters {
