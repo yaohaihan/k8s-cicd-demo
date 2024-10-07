@@ -135,7 +135,6 @@ sed -i\'\' "s#TAG_NAME#$TAG_NAME#" deploy/cicd-demo.yaml
 
 kubectl apply -f deploy/cicd-demo.yaml'''
         }
-
       }
     }
 
