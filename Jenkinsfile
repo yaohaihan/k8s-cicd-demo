@@ -71,6 +71,7 @@ pipeline {
             when {
                 branch 'master'
             }
+
             steps {
                 input(id: 'deploy-to-dev', message: 'deploy to dev?')
                 sh '''
