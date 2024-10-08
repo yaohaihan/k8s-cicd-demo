@@ -10,7 +10,9 @@ pipeline {
                         image: 192.168.110.122:8858/library/maven-jdk21:latest
                         imagePullPolicy: Always
                         command:
-                        - cat
+                        - tail
+                        - "-f"
+                        - /dev/null
                         tty: true
                     """
                 }
