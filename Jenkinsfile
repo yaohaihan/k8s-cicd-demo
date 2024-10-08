@@ -25,6 +25,7 @@ pipeline {
                           value: "http://jenkins-service.devops-test.svc.cluster.local:8080/"
                     """
                     defaultContainer 'my-agent'
+
                 }
 
     }
