@@ -39,14 +39,11 @@ pipeline {
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
-     steps {
-            sh 'which mvn'
-            sh 'mvn clean test'
-        }
 
     stages {
         stage('unit test') {
             steps {
+                sh 'which mvn'
                 sh 'mvn clean test'
             }
         }
