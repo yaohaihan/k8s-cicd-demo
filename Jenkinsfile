@@ -11,7 +11,7 @@ pipeline {
                         imagePullPolicy: Always
                       - name: jnlp
                         image: jenkins/inbound-agent:4.10-3
-                        args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
+                        args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
                         env:
                         - name: JENKINS_SECRET
                         valueFrom:
