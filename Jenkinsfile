@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-                    label 'maven'
+                    inheritFrom 'maven'
                     defaultContainer 'my-agent-maven'  // 指定默认的容器为 my-agent
                 }
     }
