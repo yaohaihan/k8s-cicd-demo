@@ -9,21 +9,9 @@ pipeline {
                       - name: my-agent
                         image: 192.168.110.122:8858/library/maven-jdk21:latest
                         imagePullPolicy: Always
-                        command:
-                        - sleep
-                        - "1000"
-
-                        tty: true
                     """
                 }
     }
-
-
-
-
-
-
-
 
     parameters {
         gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
