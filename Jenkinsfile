@@ -14,11 +14,11 @@ pipeline {
                         args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
                         env:
                         - name: JENKINS_SECRET
-                        valueFrom:
+                          valueFrom:
                             fieldRef:
                               fieldPath: metadata.annotations['jenkins.io/secret']
                         - name: JENKINS_NAME
-                        valueFrom:
+                          valueFrom:
                             fieldRef:
                               fieldPath: metadata.annotations['jenkins.io/name']
                         - name: JENKINS_URL
