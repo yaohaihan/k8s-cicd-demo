@@ -1,8 +1,30 @@
 pipeline {
     agent {
         kubernetes {
-                    inheritFrom 'maven'
-                    defaultContainer 'my-agent-maven'  // 指定默认的容器为 my-agent
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                      containers:
+                      - name: my-agent
+                        image: 192.168.110.122:8858/library/agent-maven:latest
+                        imagePullPolicy: Always
+                      - name: jnlp
+                        image: jenkins/inbound-agent:4.10-3
+                        args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
+                        env:
+                        - name: JENKINS_SECRET
+                        valueFrom:
+                            fieldRef:
+                              fieldPath: metadata.annotations['jenkins.io/secret']
+                        - name: JENKINS_NAME
+                        valueFrom:
+                            fieldRef:
+                              fieldPath: metadata.annotations['jenkins.io/name']
+                        - name: JENKINS_URL
+                          value: "http://jenkins-service.devops-test.svc.cluster.local:8080/"
+                    """
+                    defaultContainer 'my-agent'
                 }
     }
 
