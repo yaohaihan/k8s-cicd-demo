@@ -43,6 +43,7 @@ pipeline {
     stages {
         stage('unit test') {
             steps {
+                sh 'echo $PATH'
                 sh 'which mvn'
                 sh 'mvn clean test'
             }
