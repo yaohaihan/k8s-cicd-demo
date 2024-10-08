@@ -24,6 +24,8 @@ pipeline {
 
 
 
+
+
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
         GIT_REPO_URL = 'https://github.com/yaohaihan/k8s-cicd-demo.git'
