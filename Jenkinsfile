@@ -57,9 +57,9 @@ pipeline {
 
         stage('unit test') {
             steps {
-                container('my-agent'){
-                    sh 'mvn clean test'
-                }
+
+                sh 'mvn clean test'
+
             }
         }
 
@@ -143,6 +143,8 @@ pipeline {
                     return params.TAG_NAME =~ /v.*/
                 }
             }
+
+
 
 
             steps {
