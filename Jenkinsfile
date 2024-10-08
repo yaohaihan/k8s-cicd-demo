@@ -15,8 +15,6 @@ pipeline {
                 }
     }
 
-
-
     parameters {
         gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
         choice(name: 'NAMESPACE', choices: ['devops-dev', 'devops-test', 'devops-prod'], description: '命名空间')
