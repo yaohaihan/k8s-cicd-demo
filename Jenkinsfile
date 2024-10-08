@@ -54,11 +54,14 @@ pipeline {
 
 
     stages {
-        stage('unit test') {
-            steps {
-                sh 'mvn clean test'
+        container('my-agent'){
+            stage('unit test') {
+                steps {
+                    sh 'mvn clean test'
+                }
             }
         }
+
 
 
 
