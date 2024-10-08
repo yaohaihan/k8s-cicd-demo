@@ -74,6 +74,7 @@ pipeline {
                         sh 'mvn sonar:sonar -Dsonar.projectKey=$APP_NAME'
                     }
                 }
+
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 }
