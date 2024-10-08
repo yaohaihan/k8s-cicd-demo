@@ -8,6 +8,7 @@ pipeline {
                       containers:
                       - name: my-agent
                         image: 192.168.110.122:8858/library/maven-jdk21:latest
+                        imagePullPolicy: Always
                         command:
                         - cat
                         tty: true
@@ -22,6 +23,9 @@ pipeline {
         string(name: 'TAG_NAME', defaultValue: 'snapshot', description: '标签名称，必须以 v 开头，例如：v1、v1.0.0')
     }
 
+
+
+
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
         GIT_REPO_URL = 'https://github.com/yaohaihan/k8s-cicd-demo.git'
@@ -35,7 +39,10 @@ pipeline {
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
-
+     steps {
+            sh 'which mvn'
+            sh 'mvn clean test'
+        }
 
     stages {
         stage('unit test') {
