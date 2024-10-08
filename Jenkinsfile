@@ -9,7 +9,22 @@ pipeline {
                       - name: my-agent
                         image: 192.168.110.122:8858/library/agent-maven:latest
                         imagePullPolicy: Always
+                      - name: jnlp
+                        image: jenkins/inbound-agent:4.10-3
+                        args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
+                        env:
+                        - name: JENKINS_SECRET
+                        valueFrom:
+                            fieldRef:
+                              fieldPath: metadata.annotations['jenkins.io/secret']
+                        - name: JENKINS_NAME
+                        valueFrom:
+                            fieldRef:
+                              fieldPath: metadata.annotations['jenkins.io/name']
+                        - name: JENKINS_URL
+                          value: "http://jenkins-service.devops-test.svc.cluster.local:8080/"
                     """
+                    defaultContainer 'my-agent'  // 指定默认的容器为 my-agent
                 }
     }
 
@@ -18,13 +33,6 @@ pipeline {
         choice(name: 'NAMESPACE', choices: ['devops-dev', 'devops-test', 'devops-prod'], description: '命名空间')
         string(name: 'TAG_NAME', defaultValue: 'snapshot', description: '标签名称，必须以 v 开头，例如：v1、v1.0.0')
     }
-
-
-
-
-
-
-
 
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
@@ -43,8 +51,8 @@ pipeline {
     stages {
         stage('unit test') {
             steps {
-                sh 'which mvn'
-                sh 'echo $PATH'
+
+
                 sh 'mvn clean test'
             }
         }
