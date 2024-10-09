@@ -60,14 +60,14 @@ pipeline {
 
         stage('unit test') {
 
-            timeout(time: 30, unit: 'MINUTES') {
 
-                steps {
 
-                    sh 'mvn clean test'
+            steps {
 
-                }
+                sh 'mvn clean test'
+
             }
+
         }
 
 
