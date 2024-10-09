@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'jenkins-maven-agent'
+            label 'jenkins-maven-jdk8'
             yaml """
 apiVersion: v1
 kind: Pod
@@ -12,7 +12,7 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
   - name: maven
-    image: 192.168.110.122:8858/library/agent-maven:latest
+    image: maven:3.6.3-jdk-8
     command:
     - cat
     tty: true
