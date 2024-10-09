@@ -11,12 +11,16 @@ pipeline {
                         imagePullPolicy: Always
                         command:
                         - cat
+                        args:
+                        - /dev/tty
                         tty: true
                       - name: jnlp
                         image: jenkins/inbound-agent:4.10-3
                         args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
                         command:
                         - cat
+                        args:
+                        - /dev/tty
                         tty: true
                         env:
                         - name: JENKINS_SECRET
