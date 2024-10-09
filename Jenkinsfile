@@ -122,6 +122,7 @@ pipeline {
                     return params.TAG_NAME =~ /v.*/
                 }
             }
+
             steps {
                 input(id: 'release-image-with-tag', message: 'release image with tag?')
                 withCredentials([usernamePassword(credentialsId: "$GIT_CREDENTIAL_ID", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
