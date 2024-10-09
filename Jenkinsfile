@@ -1,41 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-                    yaml """
-                    apiVersion: v1
-                    kind: Pod
-                    spec:
-                      containers:
-                      - name: my-agent
-                        image: 192.168.110.122:8858/library/agent-maven:latest
-                        imagePullPolicy: Always
-                        command:
-                        - cat
-                        args:
-                        - /dev/tty
-                        tty: true
-                      - name: jnlp
-                        image: jenkins/inbound-agent:4.10-3
-                        args:
-                        - /dev/tty
-                        command:
-                        - cat
-                        tty: true
-                        env:
-                        - name: JENKINS_SECRET
-                          valueFrom:
-                            fieldRef:
-                              fieldPath: metadata.annotations['jenkins.io/secret']
-                        - name: JENKINS_NAME
-                          valueFrom:
-                            fieldRef:
-                              fieldPath: metadata.annotations['jenkins.io/name']
-                        - name: JENKINS_URL
-                          value: "http://jenkins-service.devops-test.svc.cluster.local:8080/"
-                    """
-                    defaultContainer 'my-agent'
-                }
-    }
+    agent any
 
     parameters {
         gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
@@ -64,9 +28,7 @@ pipeline {
 
         stage('unit test') {
             steps {
-
                 sh 'mvn clean test'
-
             }
 
         }
