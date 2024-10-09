@@ -12,7 +12,7 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
   - name: maven
-    image: maven:3.6.3-jdk-11
+    image: 192.168.110.122:8858/library/agent-maven:latest
     command:
     - cat
     tty: true
