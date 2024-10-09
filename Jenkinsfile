@@ -45,9 +45,9 @@ pipeline {
 
         stage('unit test') {
             steps {
-
-                sh 'mvn clean test'
-
+                container('maven') {
+                    sh 'mvn clean package'
+                }
             }
 
         }
