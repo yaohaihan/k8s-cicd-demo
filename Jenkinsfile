@@ -1,21 +1,24 @@
 pipeline {
     agent {
         kubernetes {
-            label 'my-jenkins-agent'
-            defaultContainer 'jnlp'
+            label 'jenkins-maven-agent'
             yaml """
-                apiVersion: v1
-                kind: Pod
-                spec:
-                containers:
-                - name: jnlp
-                  image: jenkins/inbound-agent:latest
-                - name: maven
-                  image: maven:3-alpine
-                  command: ['cat']
-                  tty: true
-            """
-                }
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-agent
+spec:
+  containers:
+  - name: jnlp
+    image: jenkins/inbound-agent:latest
+  - name: maven
+    image: maven:3.6.3-jdk-11
+    command:
+    - cat
+    tty: true
+"""
+            defaultContainer 'jnlp'
+        }
     }
 
     parameters {
