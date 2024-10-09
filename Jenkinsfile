@@ -15,6 +15,9 @@ pipeline {
                       - name: jnlp
                         image: jenkins/inbound-agent:4.10-3
                         args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+                        command:
+                        - cat
+                        tty: true
                         env:
                         - name: JENKINS_SECRET
                           valueFrom:
