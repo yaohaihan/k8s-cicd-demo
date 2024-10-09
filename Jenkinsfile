@@ -9,6 +9,9 @@ pipeline {
                       - name: my-agent
                         image: 192.168.110.122:8858/library/agent-maven:latest
                         imagePullPolicy: Always
+                        command:
+                        - cat
+                        tty: true
                       - name: jnlp
                         image: jenkins/inbound-agent:4.10-3
                         args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
@@ -60,10 +63,14 @@ pipeline {
     stages {
 
         stage('unit test') {
-            steps {
 
-                sh 'mvn clean test'
+            timeout(time: 30, unit: 'MINUTES') {
 
+                steps {
+
+                    sh 'mvn clean test'
+
+                }
             }
         }
 
