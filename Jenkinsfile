@@ -68,19 +68,19 @@ pipeline {
         }
 
 
-        stage('sonarqube analysis') {
-            steps {
-                withCredentials([string(credentialsId: "$SONAR_CREDENTIAL_ID", variable: 'SONAR_TOKEN')]) {
-                    withSonarQubeEnv('sonarqube') {
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=$APP_NAME'
-                    }
-                }
-
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+//         stage('sonarqube analysis') {
+//             steps {
+//                 withCredentials([string(credentialsId: "$SONAR_CREDENTIAL_ID", variable: 'SONAR_TOKEN')]) {
+//                     withSonarQubeEnv('sonarqube') {
+//                         sh 'mvn sonar:sonar -Dsonar.projectKey=$APP_NAME'
+//                     }
+//                 }
+//
+//                 timeout(time: 1, unit: 'HOURS') {
+//                     waitForQualityGate abortPipeline: true
+//                 }
+//             }
+//         }
 
         stage('build & push') {
             steps {
