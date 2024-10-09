@@ -32,8 +32,6 @@ pipeline {
                     """
                     defaultContainer 'my-agent'
                 }
-
-
     }
 
     parameters {
