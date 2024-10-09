@@ -1,5 +1,22 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'my-jenkins-agent'
+            defaultContainer 'jnlp'
+            yaml """
+                apiVersion: v1
+                kind: Pod
+                spec:
+                containers:
+                - name: jnlp
+                  image: jenkins/inbound-agent:latest
+                - name: maven
+                  image: maven:3-alpine
+                  command: ['cat']
+                  tty: true
+            """
+                }
+    }
 
     parameters {
         gitParameter name: 'BRANCH_NAME', branch: '', branchFilter: '.*', defaultValue: 'master', description: '请选择要发布的分支', quickFilterEnabled: false, selectedValue: 'NONE', tagFilter: '*', type: 'PT_BRANCH'
@@ -28,7 +45,9 @@ pipeline {
 
         stage('unit test') {
             steps {
+
                 sh 'mvn clean test'
+
             }
 
         }
