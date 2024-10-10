@@ -39,8 +39,6 @@ spec:
         SONAR_CREDENTIAL_ID = 'sonarqube-token'
     }
 
-
-
     stages {
 
 //         stage('Clean Workspace') {
