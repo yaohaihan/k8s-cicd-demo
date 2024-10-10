@@ -49,19 +49,19 @@ spec:
 //             }
 //         }
 
-        stage('Check Maven') {
-            steps {
-                container('maven') {
-                    sh 'git --version'
-                    sh 'kubectl --help'
-                    sh 'java --version'
-                    sh 'ls -l /usr/bin/mvn'  // 检查文件是否存在及其权限
-                    sh 'file /usr/bin/mvn'   // 检查文件类型
-                    sh 'cat /usr/bin/mvn'    // 检查是否为符号链接或具体内容
-
-                }
-            }
-        }
+//         stage('Check Maven') {
+//             steps {
+//                 container('maven') {
+//                     sh 'git --version'
+//                     sh 'kubectl --help'
+//                     sh 'java --version'
+//                     sh 'ls -l /usr/bin/mvn'  // 检查文件是否存在及其权限
+//                     sh 'file /usr/bin/mvn'   // 检查文件类型
+//                     sh 'cat /usr/bin/mvn'    // 检查是否为符号链接或具体内容
+//
+//                 }
+//             }
+//         }
 
         stage('unit test') {
             steps {
