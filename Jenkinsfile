@@ -55,6 +55,7 @@ spec:
             steps {
                 container('maven') {
                     sh 'git --version'
+                    sh 'sleep 360000'
                     sh 'find / -name "*kubectl*"'
                     sh 'kubectl --help'
                     sh 'java --version'
