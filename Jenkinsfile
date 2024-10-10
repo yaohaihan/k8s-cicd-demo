@@ -11,13 +11,10 @@ spec:
   containers:
   - name: jnlp
     image: jenkins/inbound-agent:latest
-    securityContext:
-      runAsUser: 0
   - name: maven
-    image: 192.168.110.122:8858/library/jenkins-slave:v1
+    image: 192.168.110.122:8858/library/jenkins-slave:v2
     tty: true
-    securityContext:
-      runAsUser: 0
+
 """
             defaultContainer 'jnlp'
         }
