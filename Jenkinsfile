@@ -53,7 +53,6 @@ spec:
             steps {
                 container('maven') {
                     sh 'git --version'
-                    sh 'sleep 1000'
                     sh 'kubectl --help'
                     sh 'java --version'
                     sh 'ls -l /usr/bin/mvn'  // 检查文件是否存在及其权限
