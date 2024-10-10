@@ -47,7 +47,7 @@ spec:
 
         stage('Clean Workspace') {
             steps {
-                deleteDir()
+                cleanWs()  // 这会清除整个工作区
             }
         }
 
