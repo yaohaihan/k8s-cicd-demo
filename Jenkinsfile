@@ -42,8 +42,6 @@ spec:
 
 
 
-
-
     stages {
 
         stage('unit test') {
