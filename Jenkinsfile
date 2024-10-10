@@ -45,11 +45,11 @@ spec:
 
     stages {
 
-        stage('Clean Workspace') {
-            steps {
-                cleanWs()  // 这会清除整个工作区
-            }
-        }
+//         stage('Clean Workspace') {
+//             steps {
+//                 cleanWs()  // 这会清除整个工作区
+//             }
+//         }
 
         stage('Check Maven') {
             steps {
