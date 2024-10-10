@@ -13,8 +13,6 @@ spec:
     image: jenkins/inbound-agent:latest
   - name: maven
     image: 192.168.110.122:8858/library/jenkins-slave:v1
-    command:
-    - cat
     tty: true
 """
             defaultContainer 'jnlp'
