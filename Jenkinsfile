@@ -45,7 +45,7 @@ spec:
         stage('unit test') {
             steps {
                 container('maven') {
-                    sh 'mvn clean package'
+                    sh '/usr/bin/mvn clean package'
                 }
             }
 
