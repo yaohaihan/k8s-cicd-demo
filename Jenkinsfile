@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'jenkins-maven-jdk8'
+
             yaml """
 apiVersion: v1
 kind: Pod
