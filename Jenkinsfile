@@ -12,7 +12,7 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
   - name: maven
-    image: 192.168.110.122:8858/library/jenkins-slave:v2
+    image: 192.168.110.122:8858/library/jenkins-slave:v3
     tty: true
 
 """
@@ -25,6 +25,7 @@ spec:
         choice(name: 'NAMESPACE', choices: ['devops-dev', 'devops-test', 'devops-prod'], description: '命名空间')
         string(name: 'TAG_NAME', defaultValue: 'snapshot', description: '标签名称，必须以 v 开头，例如：v1、v1.0.0')
     }
+
 
     environment {
         DOCKER_CREDENTIAL_ID = 'harbor-user-pass'
