@@ -12,7 +12,7 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
   - name: maven
-    image: 192.168.110.122:8858/library/jenkins-slave:v3
+    image: 192.168.110.122:8858/library/my-agent:v2
     tty: true
 """
             defaultContainer 'jnlp'
